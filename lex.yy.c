@@ -507,12 +507,14 @@ char *yytext;
 #line 4 "chantier.l"
 #include <stdlib.h>
 #include <string.h>
+#define TRUE 1
+#define FALSE 0
 char* mac;
 char* ip;
 int found;
-#line 514 "lex.yy.c"
-/* This tells flex to read only one input file */
 #line 516 "lex.yy.c"
+/* This tells flex to read only one input file */
+#line 518 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -729,10 +731,10 @@ YY_DECL
 		}
 
 	{
-#line 17 "chantier.l"
+#line 19 "chantier.l"
 
 
-#line 736 "lex.yy.c"
+#line 738 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -791,46 +793,45 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 19 "chantier.l"
+#line 21 "chantier.l"
 
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 20 "chantier.l"
+#line 22 "chantier.l"
 
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 21 "chantier.l"
+#line 23 "chantier.l"
 {
 	if (strcmp(yytext,mac)==0) {
-		found=1;
+		found=TRUE;
 	}
-
 }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 27 "chantier.l"
+#line 28 "chantier.l"
 {
-	if (found==1) {
+	if (found) {
 		ip = yytext;
 		printf("%s", ip);
-		found=0;
+		found=FALSE;
 	}
 }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 34 "chantier.l"
+#line 35 "chantier.l"
 
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 36 "chantier.l"
+#line 37 "chantier.l"
 ECHO;
 	YY_BREAK
-#line 834 "lex.yy.c"
+#line 835 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1835,16 +1836,15 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 36 "chantier.l"
+#line 37 "chantier.l"
 
 /*** C Code section ***/
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
    /* Call the lexer, then quit. */
    mac = argv[1];
-   found=0;
-   yyin = fopen("DHCPLOG","r+");
+   found=FALSE;
+   yyin = fopen("DHCPLOG.txt","r+");
    yylex();
    printf("\n");
    fclose(yyin);

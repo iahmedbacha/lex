@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
    /* Call the lexer, then quit. */
    mac = argv[1];
    found=FALSE;
-   yyin = fopen("DHCPLOG","r+");
+   yyin = fopen("DHCPLOG.txt","r+");
    yylex();
    printf("\n");
    fclose(yyin);
